@@ -10,3 +10,7 @@ sudo sed -i "s/ip=[0-9\.]*//" /boot/cmdline.txt
 # Install wiringpi
 echo "Installing wiringpi"
 $DIRPATH/install_wiringpi.sh
+
+# Configure dhcp server
+$DIRPATH/config-dhcp.sh
+

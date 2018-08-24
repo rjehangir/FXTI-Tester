@@ -21,5 +21,9 @@ cp $DIRPATH/fxtitest.sh $HOMEDIR
 
 
 # Get fxtitest.sh to run on start
-echo "Configuring fxtitest.sh to run on start with ...?"
+echo "Configuring fxtitest.sh to run on start with systemd"
+sudo cp $DIRPATH/fxtitest.service /lib/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl start fxtitest.service
+sudo systemctl enable fxtitest.service
 

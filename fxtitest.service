@@ -1,0 +1,10 @@
+[Unit]
+Description=FXTI Test Jig Stuff
+
+[Service]
+Type=simple
+ExecStart=/home/pi/connectiontest.sh
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

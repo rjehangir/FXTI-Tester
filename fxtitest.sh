@@ -86,9 +86,10 @@ while true; do
                 STATE=$STATE_FATHOMX_CONNECTED
 
             # Check for Fathom-X Timeout
-            elif [ $SECONDS - $USB_CONNECTION_TIME -gt $FATHOMX_TIMEOUT ]; then
+            elif [ $(($SECONDS - $USB_CONNECTION_TIME)) -gt $FATHOMX_TIMEOUT ]
+            then
                 # Illuminate FXTI_FAIL_LED
-                gpio write $FXTI_FAIL_LED
+                gpio write $FXTI_FAIL_LED_PIN 1
 
                 # Move to STATE_FATHOMX_TIMEOUT
                 STATE=$STATE_FATHOMX_TIMEOUT
@@ -141,8 +142,8 @@ while true; do
                 # Illuminate FATHOMX_PASS_LED
                 gpio write $FATHOMX_PASS_LED_PIN 1
                 
-                # Extinguish FATHOMX_FAIL_LED
-                gpio write $FATHOMX_FAIL_LED_PIN 0
+                # Extinguish FXTI_FAIL_LED
+                gpio write $FXTI_FAIL_LED_PIN 0
 
                 # Illuminate FXTI_PASS_LED
                 gpio write $FXTI_PASS_LED_PIN 1

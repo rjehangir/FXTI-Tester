@@ -10,19 +10,22 @@ else
 fi
 echo "isc-dhcp-server installed"
 
+S0="auto eth0"
 S1="iface eth0 inet static"
 S2="address 192.168.2.2"
 S3="netmask 255.255.255.0"
 
 #Remove existing settings for all other configurations from /network/interfaces
 # e.g. sed -i -e '/pattern/,+#d', deletes any line containing the pattern and # number of lines after that.
+sudo sed -i -e '/auto eth0/d' /etc/network/interfaces
 sudo sed -i -e '/iface eth0 inet manual/,+1d' /etc/network/interfaces
 sudo sed -i -e '/eth0 inet static/,+3d' /etc/network/interfaces
 sudo sed -i -e '/eth0 inet dhcp/,+1d' /etc/network/interfaces
 echo "Previous configuration settings removed from /network/interfaces"
 
 #Append configuration settings for dhcp-server at the end of /network/interfaces
-sudo sed -i -e "\$a$S1" \
+sudo sed -i -e "\$a$S0" \
+-e "\$a$S1" \
 -e "\$a$S2" \
 -e "\$a$S3" \
 /etc/network/interfaces

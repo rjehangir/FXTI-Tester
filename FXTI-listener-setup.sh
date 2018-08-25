@@ -14,3 +14,5 @@ $DIRPATH/install_wiringpi.sh
 # Configure dhcp server
 $DIRPATH/config-dhcp.sh
 
+# Reboot to allow the DHCP server to start up
+sudo reboot
